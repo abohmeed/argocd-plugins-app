@@ -7,5 +7,5 @@ spec:
     spec:
       containers:
       - name: sample-app
-        image: "my-sample-app:dev"
+        image: "${IMAGE_NAME}:${IMAGE_TAG}"
 

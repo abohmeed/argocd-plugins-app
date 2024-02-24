@@ -3,7 +3,7 @@ repoServer:
   - name: my-plugin
     command:
     - "/var/run/argocd/argocd-cmp-server"
-    image: afakharany/argocd-plugin:1.1
+    image: afakharany/argocd-plugin:1.6
     securityContext:
       runAsNonRoot: true
       runAsUser: 999

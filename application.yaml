@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/argoproj/argocd-example-apps.git'
+    repoURL: 'https://github.com/abohmeed/argocd-plugins-app.git'
     targetRevision: HEAD
-    path: 'kustomize-guestbook'
+    path: 'kustomize/overlays/development'
     plugin:
-      name: my-plugin-v1.1
+      name: my-plugin-v1.6
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

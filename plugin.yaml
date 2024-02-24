@@ -6,7 +6,7 @@ metadata:
 spec:
   # The version of your plugin. Optional. If specified, the Application's spec.source.plugin.name field
   # must be <plugin name>-<plugin version>.
-  version: v1.1
+  version: v1.6
   # The init command runs in the Application source directory at the beginning of each manifest generation. The init
   # command can output anything. A non-zero status code will fail manifest generation.
   init:
@@ -22,5 +22,4 @@ spec:
     command: [sh, -c]
     args:
       - |
-        export $(cat env-vars.env | xargs)
-        envsubst < deployment-patch.yaml.template > deployment-patch.yaml
+        export $(cat env-vars.env | xargs) && kustomize build | envsubst
