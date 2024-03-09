@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ConfigManagementPlugin
+metadata:
+  name: envsubst-plugin
+spec:
+  version: v1.0
+  init:
+    command: [sh]
+    args: [-c, 'echo "Initializing..."']
+  generate:
+    command: [sh,-c]
+    args:
+      - |
+        export $(cat env-vars.env | xargs) && kustomize build | envsubst

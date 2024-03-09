@@ -1,0 +1,19 @@
+repoServer:
+  extraContainers:
+  - name: envsubst-plugin
+    command:
+    - "/var/run/argocd/argocd-cmp-server"
+    image: afakharany/envsubst-plugin:1.0
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 999
+    volumeMounts:
+    - mountPath: /var/run/argocd
+      name: var-files
+    - mountPath: /home/argocd/cmp-server/plugins
+      name: plugins
+    - mountPath: /tmp
+      name: cmp-tmp
+  volumes:
+  - name: cmp-tmp
+    emptyDir: {}

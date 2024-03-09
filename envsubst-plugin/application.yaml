@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: httpd-example
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/abohmeed/argocd-plugins-app.git'
+    targetRevision: HEAD
+    path: 'kustomize/overlays/development'
+    plugin:
+      name: envsubst-plugin-v1.0
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
